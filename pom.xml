@@ -22,12 +22,12 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
 
-        <v.netty>4.1.13.Final</v.netty>
-        <commons-codec.version>1.10</commons-codec.version>
+        <v.netty>4.1.77.Final</v.netty>
+        <commons-codec.version>1.13</commons-codec.version>
         <spring-boot.version>1.5.14.RELEASE</spring-boot.version>
         <start-class>cn.baiyang.apigateway.ApiGatewayApplication</start-class>
 
-        <junit.version>4.12</junit.version>
+        <junit.version>4.13.1</junit.version>
         <okhttp3.version>3.8.1</okhttp3.version>
 
         <v.springcloud.alibaba.nacos.discovery>0.1.2.RELEASE</v.springcloud.alibaba.nacos.discovery>
@@ -103,7 +103,7 @@
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <version>5.1.46</version>
+            <version>8.0.28</version>
         </dependency>
 
         <dependency>
