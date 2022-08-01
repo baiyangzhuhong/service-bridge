@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.baiyang.apigateway.dao.version.VersionKeyConfigMapper">
+
+    <sql id="allColumns">
+        id,app_id,signkey_store_id,version_code,version_name,is_deleted,gmt_created,gmt_modified
+    </sql>
+
+    <select id="listVersionKeyConfig" resultType="versionKeyConfigDO">
+        select <include refid="allColumns"/> from version_key_config where is_deleted = 0
+    </select>
+
+</mapper>

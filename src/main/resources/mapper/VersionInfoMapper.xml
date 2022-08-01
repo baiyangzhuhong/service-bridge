@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.baiyang.apigateway.dao.version.VersionInfoMapper">
+
+    <sql id="allColumns">
+        id,version_client_id,version_number,status,gmt_created,gmt_modified,sign_version
+    </sql>
+
+    <select id="listVersionInfo" resultType="versionInfoDO">
+        select <include refid="allColumns"/> from version_info where status IN (0,1) limit #{offset}, #{pageSize}
+    </select>
+
+
+</mapper>

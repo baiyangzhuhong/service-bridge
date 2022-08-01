@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.baiyang.apigateway.dao.redirectconfig.RedirectConfigMapper">
+
+    <resultMap id="redirectConfigMap" type="cn.baiyang.apigateway.dao.redirectconfig.model.RedirectConfigDO">
+        <id column="id" jdbcType="INTEGER" property="id" />
+        <result column="source_url" jdbcType="VARCHAR" property="sourceUrl" />
+        <result column="target_url" jdbcType="VARCHAR" property="targetUrl" />
+        <result column="is_valid" jdbcType="TINYINT" property="isValid" />
+        <result column="gmt_created" jdbcType="TIMESTAMP" property="gmtCreated" />
+        <result column="gmt_modified" jdbcType="TIMESTAMP" property="gmtModified" />
+    </resultMap>
+
+    <select id="selectAll" resultMap="redirectConfigMap">
+        SELECT id, source_url, target_url, is_valid, gmt_created, gmt_modified
+        FROM apigateway_redirect_config
+        WHERE is_valid = 1
+    </select>
+</mapper>

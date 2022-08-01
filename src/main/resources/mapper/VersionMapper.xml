@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.baiyang.apigateway.dao.version.VersionMapper">
+
+    <select id="listVersionInfo" resultType="cn.baiyang.apigateway.dao.version.model.VersionDO">
+        SELECT vc.id AS versionClientId,vc.app_id AS appId,vc.app_os AS appOs,vc.app_type AS appType,vc.app_name AS
+        appName,vc.source_id AS sourceId,vc.sms_signature AS smsSignature,
+        vc.ras_private_key AS rasPrivateKey,vc.ras_public_key AS rasPublicKey,vc.sign_version AS signVersion,
+        vo.lowest_version AS lowestVersion,vo.gmt_created AS gmtCreated,vo.gmt_modified AS gmtModified
+        FROM version_online vo, version_client vc
+        WHERE vo.version_client_id = vc.id
+        limit #{offset}, #{pageSize}
+    </select>
+
+    <select id="listSignKeys" resultType="cn.baiyang.apigateway.dao.version.model.SignKeyDO">
+        SELECT
+          vkc.app_id AS appId,
+          ss.ras_private_key AS rsaPrivateKey,
+          vkc.version_name AS version,
+          vkc.gmt_created AS gmtCreated,
+          vkc.gmt_modified AS gmtModified
+        FROM
+          version_key_config vkc, signkey_store ss
+        WHERE
+          vkc.signkey_store_id = ss.id and vkc.is_deleted=0
+        LIMIT 500
+    </select>
+
+</mapper>
